@@ -32,7 +32,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 call vundle#end()            " 必须
 filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和文件类型相关脚本
 " 忽视插件改变缩进,可以使用以下替代:
-"filetype plugin on
+" filetype plugin on
 "
 " 简要帮助文档
 " :PluginList       - 列出所有已配置的插件
@@ -43,29 +43,66 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 " 查阅 :h vundle 获取更多细节和wiki以及FAQ
 " 将你自己对非插件片段放在这行之后
 
-" My Plugin
 
-set tags=tags;
-set autochdir				"首先在当前目录里寻找tags文件，如果没有找到tags文件，就到父目录中查找，一直向上递归
-noremap <silent> <F6> :!ctags -R<CR><CR>		"更新ctags标签文件快捷键设置
+""""""""""""""""""""""""""""""""""""""""""""""""""
+ 
+" my plugin setting for kernel development
+ 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+set mouse=a
+set tags=tags;                   	"首先在当前目录里寻找tags文件，如果没有找到tags文件，就到父目录中查找，一直向上递归
+set autochdir
+" noremap <silent> <F6> :!ctags -R<CR><CR>		"更新ctags标签文件快捷键设置
 
 set number
-set t_Co=256
-syntax on
 set hlsearch
+" 开启语法高亮功能
+syntax enable
+" 允许用指定语法高亮配色方案替换默认方案
+syntax on
+" 高亮显示当前行/列
+set cursorline
+" set cursorcolumn
 
+
+"""""""""""""""""""""""""""""""
+ 
+" vim-kinux-coding-stylr setting
+ 
+"""""""""""""""""""""""""""""""
 Plugin 'vivien/vim-linux-coding-style'
+
+
+"""""""""""""""""""""""""""""""
+ 
+" a.vim setting
+ 
+"""""""""""""""""""""""""""""""
 Plugin 'a.vim'
 
+
+"""""""""""""""""""""""""""""""
+ 
+" molokai setting
+ 
+"""""""""""""""""""""""""""""""
 Plugin 'tomasr/molokai'
+set t_Co=256
+set background=dark
 let g:rehash256 = 1
 " let g:molokai_original = 1
 colorscheme molokai
 
+
+"""""""""""""""""""""""""""""""
+ 
+" taglist.vim setting
+ 
+"""""""""""""""""""""""""""""""
 Plugin 'taglist.vim'
 " 按F8按钮，在窗口的左侧出现taglist的窗口,像vc的左侧的workpace
-nnoremap <silent> <F8> :TlistToggle<CR><CR>
-let Tlist_Auto_Open = 1			     "启动vim后自动打开taglist窗口
+" nnoremap <silent> <F8> :TlistToggle<CR>
+let Tlist_Auto_Open = 0			     "启动vim后自动打开taglist窗口
 " 设置taglist窗口大小
 let Tlist_WinHeight = 40
 " let Tlist_WinWidth = 40
@@ -73,6 +110,130 @@ let Tlist_Show_One_File=0                    " 只显示当前文件的tags
 let Tlist_Exit_OnlyWindow=1                  " 如果Taglist窗口是最后一个窗口则退出Vim
 " let Tlist_Use_Right_Window=1               " 在右侧窗口中显示
 let Tlist_Use_Left_Window=1                  " 在left窗口中显示
-let Tlist_File_Fold_Auto_Close=1             " 自动折叠
+let Tlist_File_Fold_Auto_Close=1             " 非当前文件，函数列表折叠隐藏
+let Tlist_Auto_Update=1            	     " Automatically update the taglist to include newly edited files.
 
+
+"""""""""""""""""""""""""""""""
+ 
+" tagbar setting
+ 
+"""""""""""""""""""""""""""""""
+" Plugin 'majutsushi/tagbar'
+
+
+"""""""""""""""""""""""""""""""
+ 
+" NERD-tree setting
+ 
+"""""""""""""""""""""""""""""""
 Plugin 'The-NERD-tree'
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeWinPos="right"			" 将 NERDTree 的窗口设置在 vim 窗口的右侧（默认为左侧）
+let NERDTreeShowBookmarks=1 		     	" 当打开 NERDTree 窗口时，自动显示 Bookmarks
+" let NERDTreeShowLineNumbers=1		     	" 显示行号
+let NERDTreeAutoCenter=1		     	" 控制当光标移动超过一定距离时，是否自动将焦点调整到屏中心
+let NERDTreeShowHidden=1		     	" 是否显示隐藏文件
+" let NERDTreeWinSize=30			     	" 设置宽度
+let NERDTreeShowFiles=1				" 是否默认显示文件
+" let g:nerdtree_tabs_open_on_console_startup=1	" 在终端启动vim时，共享NERDTree
+" let NERDTreeMouseMode=2			" 指定鼠标模式（1.双击打开；2.单目录双文件；3.单击打开）
+" autocmd vimenter * NERDTree
+" map <C-n> :NERDTreeToggle<CR>
+
+
+"""""""""""""""""""""""""""""""
+ 
+" bufexplorer setting
+ 
+"""""""""""""""""""""""""""""""
+Plugin 'jlanzarotta/bufexplorer'
+
+
+"""""""""""""""""""""""""""""""
+ 
+" winManager setting
+ 
+"""""""""""""""""""""""""""""""
+Plugin 'winmanager'
+
+let g:NERDTree_title="[NERDTree]"  
+  
+let g:winManagerWindowLayout='NERDTree|TagList'
+  
+function! NERDTree_Start()  
+	  
+	exec 'NERDTree'  
+	      
+endfunction  
+      
+function! NERDTree_IsValid()  
+	      
+	return 1  
+		  
+endfunction
+let g:winManagerWidth = 30			"设置winmanager的宽度，默认为25
+" 键盘映射，同时加入防止因winmanager和nerdtree冲突而导致空白页的语句
+" nmap <silent> <F8> :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
+nmap <C-n> : if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
+let g:persistentBehaviour=0 			" 如果所有编辑文件都关闭了，退出vim
+
+
+"""""""""""""""""""""""""""""""
+ 
+" ctrlp setting
+ 
+"""""""""""""""""""""""""""""""
+Plugin 'ctrlpvim/ctrlp.vim'
+
+let g:ctrlp_working_path_mode = 'ra'
+
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc|o|out|in|ihex)$',
+    \ }
+
+" CtrlP auto cache clearing.
+" "
+" -----------------------------
+function! SetupCtrlP()
+	if exists("g:loaded_ctrlp") && g:loaded_ctrlp
+        	augroup CtrlPExtension
+              	autocmd!
+                autocmd FocusGained  * CtrlPClearCache
+                autocmd BufWritePost * CtrlPClearCache
+                augroup END
+	endif
+endfunction
+if has("autocmd")
+	autocmd VimEnter * :call SetupCtrlP()
+endif
+
+let g:ctrlp_max_files = 80000
+
+
+"""""""""""""""""""""""""""""""
+ 
+" air-line setting
+ 
+"""""""""""""""""""""""""""""""
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+let g:airline_theme = "bubblegum"
+" airline设置
+set laststatus=2
+" 使用powerline打过补丁的字体
+let g:airline_powerline_fonts = 1
+" 开启tabline
+let g:airline#extensions#tabline#enabled = 1
+" tabline中当前buffer两端的分隔字符
+let g:airline#extensions#tabline#left_sep = ' '
+" tabline中未激活buffer两端的分隔字符
+let g:airline#extensions#tabline#left_alt_sep = '|'
+" tabline中buffer显示编号
+let g:airline#extensions#tabline#buffer_nr_show = 1
+" 映射切换buffer的键位
+nnoremap <F9>  :bp<CR>
+nnoremap <F10> :bn<CR>
