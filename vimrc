@@ -175,8 +175,8 @@ function! NERDTree_IsValid()
 endfunction
 let g:winManagerWidth = 30			"设置winmanager的宽度，默认为25
 " 键盘映射，同时加入防止因winmanager和nerdtree冲突而导致空白页的语句
-" nmap <silent> <F8> :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
-nmap <C-n> : if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
+nmap <silent> <F8> :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
+" nmap <C-n> : if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
 let g:persistentBehaviour=0 			" 如果所有编辑文件都关闭了，退出vim
 
 
@@ -197,18 +197,18 @@ let g:ctrlp_custom_ignore = {
 " CtrlP auto cache clearing.
 " "
 " -----------------------------
-function! SetupCtrlP()
-	if exists("g:loaded_ctrlp") && g:loaded_ctrlp
-        	augroup CtrlPExtension
-              	autocmd!
-                autocmd FocusGained  * CtrlPClearCache
-                autocmd BufWritePost * CtrlPClearCache
-                augroup END
-	endif
-endfunction
-if has("autocmd")
-	autocmd VimEnter * :call SetupCtrlP()
-endif
+"function! SetupCtrlP()
+"	if exists("g:loaded_ctrlp") && g:loaded_ctrlp
+"        	augroup CtrlPExtension
+"              	autocmd!
+"                autocmd FocusGained  * CtrlPClearCache
+"                autocmd BufWritePost * CtrlPClearCache
+"                augroup END
+"	endif
+"endfunction
+"if has("autocmd")
+"	autocmd VimEnter * :call SetupCtrlP()
+"endif
 
 let g:ctrlp_max_files = 80000
 
@@ -222,6 +222,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 let g:airline_theme = "bubblegum"
+" let g:airline_theme = "molokai"
+
 " airline设置
 set laststatus=2
 " 使用powerline打过补丁的字体
@@ -237,3 +239,11 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " 映射切换buffer的键位
 nnoremap <F9>  :bp<CR>
 nnoremap <F10> :bn<CR>
+
+
+"""""""""""""""""""""""""""""""
+ 
+" YouCompleteMe setting
+ 
+"""""""""""""""""""""""""""""""
+" Plugin 'Valloric/YouCompleteMe'
