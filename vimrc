@@ -63,7 +63,7 @@ syntax on
 " 高亮显示当前行/列
 set cursorline
 " set cursorcolumn
-set backspace = indent,eol,start
+set backspace=indent,eol,start
 
 
 """""""""""""""""""""""""""""""
