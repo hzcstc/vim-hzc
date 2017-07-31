@@ -63,6 +63,7 @@ syntax on
 " 高亮显示当前行/列
 set cursorline
 " set cursorcolumn
+set backspace=indent,eol,start
 
 
 """""""""""""""""""""""""""""""
@@ -236,6 +237,9 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 " tabline中buffer显示编号
 let g:airline#extensions#tabline#buffer_nr_show = 1
+
+autocmd BufDelete * call airline#extensions#tabline#buflist#invalidate()
+
 " 映射切换buffer的键位
 nnoremap <F9>  :bp<CR>
 nnoremap <F10> :bn<CR>
