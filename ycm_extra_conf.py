@@ -18,14 +18,16 @@ flags_c = [
     '-x', 'c',
     '-std=gnu89',
     '-nostdinc',
-    '--sysroot=/home/hzc/work/em9180/linux-4.1.15',  # workspace
+    '--sysroot=/home/hzc/work/esm6800/linux-4.1.15',  # workspace
     # Not sure if sysroot works in clang
-    '-isystem', '/home/hzc/work/em9180/linux-4.1.15/usr/local/include',
-    '-isystem', '/home/hzc/work/em9180/linux-4.1.15/usr/include',
-    '-isystem', '/home/hzc/work/em9180/linux-4.1.15/usr/lib/gcc/x86_64-linux-gnu/5.4.0/include',
+    '-isystem', '/home/hzc/work/esm6800/linux-4.1.15/usr/local/include',
+    '-isystem', '/home/hzc/work/esm6800/linux-4.1.15/usr/include',
+    '-isystem', '/home/hzc/work/esm6800/linux-4.1.15/usr/lib/gcc/x86_64-linux-gnu/5.4.0/include',
     # Will be path mangled
     '-I', 'include',
-	'-I', 'include/linux',
+    '-I', 'include/uapi',
+    '-I', 'include/uapi/asm-generic',
+    '-I', 'include/linux',
     '-I', 'arch/arm/include',
     '-I', 'arch/arm/include/generated',
     '-I', 'include/asm-generic',
