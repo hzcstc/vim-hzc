@@ -319,6 +319,8 @@ let g:airline#extensions#whitespace#symbol = '!'
 
 autocmd BufDelete * call airline#extensions#tabline#buflist#invalidate()
 
+let g:airline#extensions#tabline#show_tab_nr = 1
+
 " 映射切换buffer的键位
 nnoremap <F9>  :bp<CR>
 nnoremap <F10> :bn<CR>
