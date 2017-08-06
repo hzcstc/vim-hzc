@@ -49,15 +49,20 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 " my plugin setting for kernel development
  
 """"""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader=","
 set mouse=a
 " 右键点击时，弹出菜单
 "set mousemodel=popup
  
 " 首先在当前目录里寻找tags文件，如果没有找到tags文件，就到父目录中查找，一直向上递归
 set tags=tags;                   	
-set autochdir
+" set autochdir
 " 更新ctags标签文件快捷键设置
-"noremap <silent> <F6> :!ctags -R<CR><CR>		
+"noremap <silent> <F6> :!ctags -R<CR><CR>
+" 正向遍历同名标签
+nmap <Leader>n :tnext<CR>
+" 反向遍历同名标签
+nmap <Leader>p :tprevious<CR>
 
 set number
 set hlsearch
@@ -75,10 +80,27 @@ set cursorline
 " set cursorcolumn
 set backspace=indent,eol,start
 
-let mapleader=","
-
 " 命令行按tab补全时，显示一个候选菜单
 set wildmenu
+
+" 自适应不同语言的智能缩进
+filetype indent on
+" 将制表符扩展为空格
+" set noexpandtab
+set expandtab
+" 设置编辑时制表符占用空格数
+set tabstop=8
+" 设置格式化时制表符占用空格数
+set shiftwidth=8
+" 让 vim 把连续数量的空格视为一个制表符
+set softtabstop=8
+
+" 基于缩进或语法进行代码折叠
+"set foldmethod=indent
+set foldmethod=syntax
+" 启动 vim 时关闭折叠代码
+" set nofoldenable
+
 
 """""""""""""""""""""""""""""""
  
@@ -120,10 +142,10 @@ Plugin 'taglist.vim'
 " nnoremap <silent> <F8> :TlistToggle<CR>
 
 "启动vim后自动打开taglist窗口
-let Tlist_Auto_Open = 0	
+"let Tlist_Auto_Open = 0	
 		     
 " 设置taglist窗口大小
-let Tlist_WinHeight = 40
+"let Tlist_WinHeight = 40
 " let Tlist_WinWidth = 40
 
 " 只显示当前文件的tags
@@ -136,7 +158,7 @@ let Tlist_Exit_OnlyWindow=1
 " let Tlist_Use_Right_Window=1
 
 " 在left窗口中显示             
-let Tlist_Use_Left_Window=1
+"let Tlist_Use_Left_Window=1
 
 " 非当前文件，函数列表折叠隐藏                  
 let Tlist_File_Fold_Auto_Close=1
@@ -229,9 +251,10 @@ let g:winManagerWidth = 30
 " 键盘映射，同时加入防止因winmanager和nerdtree冲突而导致空白页的语句
 nmap <silent> <F8> :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
 " nmap <C-n> : if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
+" nmap <silent> <F8> : WMToggle<CR>
 
 " 如果所有编辑文件都关闭了，退出vim
-let g:persistentBehaviour=0	
+let g:persistentBehaviour=0
 
 
 """""""""""""""""""""""""""""""
@@ -359,6 +382,55 @@ nnoremap <leader>gi :YcmCompleter GoToInclude<CR>
 
 """""""""""""""""""""""""""""""
  
+" grep.vim setting
+ 
+"""""""""""""""""""""""""""""""
+Plugin 'grep.vim'
+
+let Grep_Default_Options = '-rn' 
+
+nnoremap <silent> <F3> :Grep<CR> 
+
+
+"""""""""""""""""""""""""""""""
+ 
+" ctrlsf setting
+ 
+"""""""""""""""""""""""""""""""
+Plugin 'dyng/ctrlsf.vim'
+
+
+"""""""""""""""""""""""""""""""
+ 
+" nerdcommenter setting
+ 
+"""""""""""""""""""""""""""""""
+Plugin 'scrooloose/nerdcommenter'
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/*','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+
+"""""""""""""""""""""""""""""""
+ 
 " vim-startify setting
  
 """""""""""""""""""""""""""""""
@@ -392,15 +464,3 @@ Plugin 'asins/vimcdoc'
 
 " 帮助语言为中文
 " set helplang=cn
-
-
-"""""""""""""""""""""""""""""""
- 
-" indentLine setting
- 
-"""""""""""""""""""""""""""""""
-"Plugin 'Yggdroot/indentLine'
-
-"let g:indentLine_char='┆'
-"let g:indentLine_enabled = 1
-"let g:indentLine_setColors = 0
