@@ -103,6 +103,27 @@ set foldmethod=syntax
 
 
 """""""""""""""""""""""""""""""
+
+" cscope setting  
+
+"""""""""""""""""""""""""""""""
+set cscopequickfix=s-,c-,d-,i-,t-,e-
+
+if has("cscope")
+        " set csprg=/usr/bin/cscope
+        set csto=0
+        " set cst
+        set nocsverb
+        set cspc=3
+        " add any database in current directory
+        if filereadable("cscope.out")
+                cs add cscope.out
+        endif
+        set csverb
+endif
+
+
+"""""""""""""""""""""""""""""""
  
 " vim-kinux-coding-stylr setting
  
@@ -436,17 +457,6 @@ let g:NERDTrimTrailingWhitespace = 1
 """""""""""""""""""""""""""""""
 Plugin 'mhinz/vim-startify'
 
-let g:startify_custom_header = [
-                \ '   __      ___              _  _______     _________ ',
-                \ '   \ \    / (_)            | | | |____ \  | |_______|',
-                \ '    \ \  / / _ _ __ ___    | | | |    | \ | |_______ ',
-                \ '     \ \/ / | | `_ ` _ \   | | | |    | | | |_______|',
-                \ '      \  /  | | | | | | |  | | | |____| | | |_______ ',
-                \ '       \/   |_|_| |_| |_|  |_| |_|_____/  |_|_______|',
-                \ '',
-                \ '                      https://github.com/hzcstc/vim-hzc',
-                \ '',
-                \ ]
 let g:startify_custom_footer = [
                 \ '',
                 \ '',
