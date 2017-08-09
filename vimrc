@@ -107,7 +107,7 @@ set foldmethod=syntax
 " cscope setting  
 
 """""""""""""""""""""""""""""""
-set cscopequickfix=s-,c-,d-,i-,t-,e-
+" set cscopequickfix=s-,c-,d-,i-,t-,e-
 
 if has("cscope")
         " set csprg=/usr/bin/cscope
