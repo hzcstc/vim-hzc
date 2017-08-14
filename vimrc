@@ -400,6 +400,12 @@ let g:ycm_min_num_of_chars_for_completion=1
 let g:ycm_cache_omnifunc=0
 " 语法关键字补全			
 let g:ycm_seed_identifiers_with_syntax=1
+" 寻找全局配置文件
+let g:ycm_global_ycm_extra_conf='/home/hzc/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+" 让补全行为与一般的IDE一致
+set completeopt=longest,menu
+
+let g:ycm_python_binary_path = '/usr/bin/python3'
 
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 
@@ -415,11 +421,11 @@ nnoremap <leader>gi :YcmCompleter GoToInclude<CR>
 " grep.vim setting
  
 """""""""""""""""""""""""""""""
-Plugin 'grep.vim'
+" Plugin 'grep.vim'
 
-let Grep_Default_Options = '-rn' 
+" let Grep_Default_Options = '-rn' 
 
-nnoremap <silent> <F3> :Grep<CR> 
+" nnoremap <silent> <F3> :Grep<CR> 
 
 
 """""""""""""""""""""""""""""""
