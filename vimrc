@@ -21,7 +21,7 @@ Plugin 'L9'
 " 由Git支持但不再github上的插件仓库 Plugin 'git clone 后面的地址'
 Plugin 'git://git.wincent.com/command-t.git'
 " 本地的Git仓库(例如自己的插件) Plugin 'file:///+本地插件仓库绝对路径'
-Plugin 'file:///home/gmarik/path/to/plugin'
+" Plugin 'file:///home/gmarik/path/to/plugin'
 " 插件在仓库的子目录中.
 " 正确指定路径用以设置runtimepath. 以下范例插件在sparkup/vim目录下
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -54,15 +54,20 @@ set mouse=a
 " 右键点击时，弹出菜单
 "set mousemodel=popup
  
+" 设置快捷键将选中文本块复制至系统剪贴板
+vnoremap <Leader>y "+y
+" 设置快捷键将系统剪贴板内容粘贴至 vim
+nmap <Leader>p "+p
+
 " 首先在当前目录里寻找tags文件，如果没有找到tags文件，就到父目录中查找，一直向上递归
 set tags=tags;                   	
 " set autochdir
 " 更新ctags标签文件快捷键设置
 "noremap <silent> <F6> :!ctags -R<CR><CR>
 " 正向遍历同名标签
-nmap <Leader>n :tnext<CR>
+nmap <F4> :tnext<CR>
 " 反向遍历同名标签
-nmap <Leader>p :tprevious<CR>
+nmap <F3> :tprevious<CR>
 
 set number
 set hlsearch
@@ -488,4 +493,4 @@ let g:startify_custom_footer = [
 Plugin 'asins/vimcdoc'
 
 " 帮助语言为中文
-" set helplang=cn
+"
