@@ -155,15 +155,29 @@ Plugin 'a.vim'
 
 """""""""""""""""""""""""""""""
  
-" molokai setting
+" Theme setting
  
 """""""""""""""""""""""""""""""
 Plugin 'tomasr/molokai'
+Plugin 'nightsense/office'
+Plugin 'PapayaWhip'
+Plugin 'altercation/vim-colors-solarized'
+
+" set termguicolors
+
 set t_Co=256
-set background=dark
-let g:rehash256 = 1
+" set background=dark
+" let g:rehash256 = 1
 " let g:molokai_original = 1
-colorscheme molokai
+" let g:solarized_termtrans = 1
+ 
+" colorscheme molokai
+" colorscheme PapayaWhip
+" colorscheme office-light
+ 
+let g:solarized_termcolors=256
+set background=light
+colorscheme solarized
 
 
 """""""""""""""""""""""""""""""
@@ -333,8 +347,9 @@ let g:ctrlp_max_files = 100000
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-let g:airline_theme = "bubblegum"
-" let g:airline_theme = "molokai"
+" let g:airline_theme = "bubblegum"
+" let g:airline_theme = "base16_monokai"
+let g:airline_theme = "solarized"
 
 " airline设置
 set laststatus=2
@@ -493,4 +508,4 @@ let g:startify_custom_footer = [
 Plugin 'asins/vimcdoc'
 
 " 帮助语言为中文
-"
+" set helplang=cn
