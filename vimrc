@@ -162,8 +162,10 @@ Plugin 'tomasr/molokai'
 Plugin 'nightsense/office'
 Plugin 'PapayaWhip'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'crusoexia/vim-monokai'
+Plugin 'ltlollo/diokai'
 
-" set termguicolors
+set termguicolors
 
 set t_Co=256
 " set background=dark
@@ -173,11 +175,16 @@ set t_Co=256
  
 " colorscheme molokai
 " colorscheme PapayaWhip
-" colorscheme office-light
+" colorscheme office-dark
+colorscheme diokai
+
+" colorscheme monokai
+" let g:monokai_term_italic = 1
+" let g:monokai_gui_italic = 1
  
-let g:solarized_termcolors=256
-set background=light
-colorscheme solarized
+" let g:solarized_termcolors=256
+" set background=dark
+" colorscheme solarized
 
 
 """""""""""""""""""""""""""""""
@@ -214,6 +221,8 @@ let Tlist_File_Fold_Auto_Close=1
 
 " Automatically update the taglist to include newly edited files.             
 let Tlist_Auto_Update=1            	     
+
+let Tlist_Ctags_Cmd ='/usr/bin/ctags'  
 
 
 """""""""""""""""""""""""""""""
