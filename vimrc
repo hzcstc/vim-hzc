@@ -413,7 +413,7 @@ nnoremap <F10> :bn<CR>
 " YouCompleteMe setting
  
 """""""""""""""""""""""""""""""
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
 let g:ycm_collect_identifiers_from_tags_files = 1
 
