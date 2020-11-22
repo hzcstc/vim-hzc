@@ -51,6 +51,7 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader=","
 set mouse=a
+set ttymouse=sgr
 " 右键点击时，弹出菜单
 "set mousemodel=popup
  
@@ -105,7 +106,6 @@ set softtabstop=8
 set foldmethod=syntax
 " 启动 vim 时关闭折叠代码
 " set nofoldenable
-
 
 """""""""""""""""""""""""""""""
 
@@ -507,7 +507,6 @@ let g:startify_custom_footer = [
                 \ '   适用于linux-kernel开发，由 hzc 整理发布！',
                 \ ]
 
-
 """""""""""""""""""""""""""""""
  
 " vimcdoc setting
@@ -518,3 +517,4 @@ Plugin 'asins/vimcdoc'
 
 " 帮助语言为中文
 " set helplang=cn
+
