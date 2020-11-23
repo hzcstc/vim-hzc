@@ -66,9 +66,9 @@ set tags=tags;
 " 更新ctags标签文件快捷键设置
 "noremap <silent> <F6> :!ctags -R<CR><CR>
 " 正向遍历同名标签
-nmap <F4> :tnext<CR>
+nmap <F6> :tnext<CR>
 " 反向遍历同名标签
-nmap <F3> :tprevious<CR>
+nmap <F7> :tprevious<CR>
 
 set number
 set hlsearch
@@ -127,9 +127,9 @@ if has("cscope")
         set csverb
 endif
 
-nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>      
-nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>      
-nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>      
+nmap <F5> :cs find s <C-R>=expand("<cword>")<CR><CR>      
+nmap <F3> :cs find g <C-R>=expand("<cword>")<CR><CR>      
+nmap <F4> :cs find c <C-R>=expand("<cword>")<CR><CR>      
 nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>      
 nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>      
 nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>      
@@ -517,4 +517,3 @@ Plugin 'asins/vimcdoc'
 
 " 帮助语言为中文
 " set helplang=cn
-
